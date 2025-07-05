@@ -1,0 +1,100 @@
+@startuml
+
+' Interfaces
+interface Shippable {
+    +getName(): String
+    +getWeight(): double
+}
+
+interface Expirable {
+    +isExpired(): boolean
+}
+
+' Abstract Base Product
+abstract class Product {
+    -String name
+    -double price
+    -int quantity
+
+    +getName(): String
+    +getPrice(): double
+    +getQuantity(): int
+    +reduceQuantity(qty: int): void
+}
+
+' Concrete Product Implementations
+class Cheese
+class Biscuits
+class TV
+class Mobile
+class ScratchCard
+
+Cheese --> Expirable
+Cheese --> Shippable
+Cheese --|> Product
+
+Biscuits --> Expirable
+Biscuits --> Shippable
+Biscuits --|> Product
+
+TV --> Shippable
+TV --|> Product
+
+Mobile --> Shippable
+Mobile --|> Product
+
+ScratchCard --|> Product
+
+' Cart and Checkout Classes
+class ShoppingCart {
+    -List<CartItem> items
+
+    +addProduct(product: Product, quantity: int): void
+    +calculateSubtotal(): double
+    +getShippableItems(): List<Shippable>
+    +isEmpty(): boolean
+    +getItems(): List<CartItem>
+    +clear(): void
+}
+
+class CartItem {
+    -Product product
+    -int quantity
+
+    +getTotalPrice(): double
+    +getProduct(): Product
+}
+
+class Customer {
+    -String name
+    -double balance
+
+    +deductBalance(amount: double): void
+    +getBalance(): double
+    +getName(): String
+}
+
+class CheckoutService {
+    +processCheckout(customer: Customer, cart: Cart): void
+    -ShippingService shippingService
+}
+
+class ShippingService {
+    +calculateShippingCost(shippableItems: List<Shippable>): double
+    +processShipment(shippableItems: List<Shippable>): void
+    +calculateTotalWeight(shippableItems: List<Shippable>): double
+}
+
+' Relationships
+
+ShoppingCart "1" o-- "0..*" CartItem
+CartItem --> Product
+
+CheckoutService --> Customer
+CheckoutService --> ShoppingCart
+CheckoutService --> ShippingService
+ShippingService --> Shippable
+
+ShoppingCart --> Shippable
+
+@enduml

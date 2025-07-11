@@ -1,3 +1,4 @@
+package model.product;
 public class ScratchCard extends NonExpirableProduct {
 
     /**

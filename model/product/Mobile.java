@@ -1,4 +1,5 @@
-import shipping.Shippable;
+package model.product;
+import model.shipping.Shippable;
 
 public class Mobile extends NonExpirableProduct implements Shippable {
     private double weight; // Weight in kilograms

@@ -1,3 +1,4 @@
+package model.product;
 import java.time.LocalDate;
 
 public abstract class ExpirableProduct extends Product {

@@ -1,10 +1,16 @@
+
 import java.time.LocalDate;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import model.customer.*;
+import model.order.*;
+import model.product.*;
+import service.*;
 
 // I strongly recommend reading the README file carefully first 
 // to know all considerations and conventions in this project
 public class Main {
+
     public static void main(String[] args) {
         // Initialize services
         ShippingService shippingService = new ShippingService();
@@ -20,7 +26,7 @@ public class Main {
         // Create customer with sufficient balance
         Customer customer = new Customer("Ahmed Yassin", 2000.0);
 
-        System.out.println("=== E-Commerce System Demo ===\n");
+        System.out.println("\n=== E-Commerce System Demo ===\n");
 
         // Case 1: Successful checkout with mixed products
         System.out.println("Case 1: Successful checkout with mixed products");
@@ -37,13 +43,13 @@ public class Main {
 
         // Case 2: Error scenarios
         System.out.println("Case 2: Error scenarios\n");
-        demonstrateErrorScenarios(checkoutService, customer, cheese, biscuits, mobile);
+        demonstrateErrorScenarios(checkoutService, customer, cheese, mobile);
 
         System.out.println("\n" + "=".repeat(50) + "\n");
 
         // Case 3: Product expiration scenario
         System.out.println("Case 3: Product expiration scenario");
-        demonstrateExpirationScenario(checkoutService, customer);
+        demonstrateExpirationScenario();
     }
 
     /**
@@ -57,8 +63,9 @@ public class Main {
             ShoppingCart cart = new ShoppingCart();
 
             // Add products to cart (following the example format from requirements)
-            for (CartItem P : list)
+            for (CartItem P : list) {
                 cart.addProduct(P.getProduct(), P.getQuantity());
+            }
 
             System.out.println("Customer balance before checkout: " + customer.getBalance());
             System.out.println("Cart contents:");
@@ -81,7 +88,6 @@ public class Main {
     private static void demonstrateErrorScenarios(CheckoutService checkoutService,
             Customer customer,
             Product cheese,
-            Product biscuits,
             Product mobile) {
 
         // Scenario 1: Empty cart
@@ -124,8 +130,7 @@ public class Main {
     /**
      * Demonstrates expired product scenario
      */
-    private static void demonstrateExpirationScenario(CheckoutService checkoutService,
-            Customer customer) {
+    private static void demonstrateExpirationScenario() {
         System.out.println("Creating expired product...");
         try {
             // Create expired cheese (expired yesterday)

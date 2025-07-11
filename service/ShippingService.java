@@ -1,5 +1,6 @@
+package service;
 import java.util.List;
-import shipping.Shippable;
+import model.shipping.Shippable;
 
 public class ShippingService {
     private static final double SHIPPING_RATE_PER_KG = 2.0; // $2 per kg (Assumption, may not be correct)

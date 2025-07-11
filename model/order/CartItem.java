@@ -1,3 +1,5 @@
+package model.order;
+import model.product.Product;
 public class CartItem {
     private Product product;
     private int quantity;

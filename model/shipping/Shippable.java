@@ -1,4 +1,4 @@
-package shipping;
+package model.shipping;
 
 public interface Shippable {
     /**

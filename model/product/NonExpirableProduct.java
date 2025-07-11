@@ -1,3 +1,4 @@
+package model.product;
 public abstract class NonExpirableProduct extends Product {
 
     /**

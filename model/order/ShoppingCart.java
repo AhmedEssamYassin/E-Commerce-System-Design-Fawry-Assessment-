@@ -1,6 +1,8 @@
+package model.order;
 import java.util.ArrayList;
 import java.util.List;
-import shipping.Shippable;
+import model.shipping.Shippable;
+import model.product.Product;
 
 public class ShoppingCart {
     private List<CartItem> items;

@@ -1,5 +1,9 @@
+package service;
 import java.util.List;
-import shipping.Shippable;
+import model.customer.Customer;
+import model.order.CartItem;
+import model.order.ShoppingCart;
+import model.shipping.Shippable;
 
 public class CheckoutService {
     private ShippingService shippingService;

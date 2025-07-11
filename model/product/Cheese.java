@@ -1,5 +1,6 @@
+package model.product;
 import java.time.LocalDate;
-import shipping.Shippable;
+import model.shipping.Shippable;
 
 public class Cheese extends ExpirableProduct implements Shippable {
     private double weight; // Weight in kilograms

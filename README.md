@@ -69,10 +69,6 @@ Each class includes:
 Example:
 
 ```java
-/**
- * Represents a customer with a name and account balance.
- * Handles operations related to payment and balance tracking.
- */
 public class Customer {
 
     /**
@@ -105,6 +101,12 @@ javac -d bin $files
 cd bin
 java Main
 ```
+
+## Tests
+
+![Test1](images/Test1.PNG)
+
+![Test2](images/Test2.PNG)
 
 ## Author
 
